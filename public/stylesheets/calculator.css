@@ -1,0 +1,35 @@
+div.ui-datepicker{display:none;background-color:#fff;-webkit-appearance:none;-moz-border-radius:0;-webkit-border-radius:0;border-radius:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;background-color:#fff;border:1px solid;border-color:#848484 #c1c1c1 #e1e1e1;color:#000;outline:0;padding:2px 3px;font-size:13px;font-family:Arial,sans-serif}
+div.ui-datepicker:focus,div.ui-datepicker:active{-moz-box-shadow:#06f 0 0 7px;-webkit-box-shadow:#06f 0 0 7px;box-shadow:#06f 0 0 7px;z-index:1}
+div.ui-datepicker div.ui-datepicker-header a.ui-datepicker-prev{display:block;float:left;background-image:url("/images/select_arrow_left.gif");background-repeat:no-repeat;background-position:left center;padding-left:20px}
+div.ui-datepicker div.ui-datepicker-header a.ui-datepicker-next{display:block;float:right;background-image:url("/images/select_arrow_right.gif");background-repeat:no-repeat;background-position:right center;padding-right:20px}
+div.ui-datepicker div.ui-datepicker-header div.ui-datepicker-title{text-align:center;font-weight:bold}
+div.ui-datepicker div.ui-datepicker-calendar{text-align:center}
+div#options{float:left}
+div#calculation{float:right}
+.datepicker{width:6em}
+.tipsy{font-family:Arial,sans-serif;font-size:12px;line-height:1.4em}
+p.tipText{display:none}
+.basicTermlyFeeCell{border-top:#000 double;padding-top:.1em}
+div#fixedFooter{position:fixed;bottom:0;width:100%}
+div#summaryBox{background-color:#604115;color:#fff}
+div#summaryBox p{text-align:right}
+p.bigFee{font-size:2em;margin-top:.5em}
+p.perX{text-transform:uppercase;font-weight:bold;font-size:.8em}
+@media print{@page{size:landscape;margin:1cm 1cm 0 1cm}
+h1{text-align:left;font-size:16pt}
+h2#weeklySessionsHeader{padding-top:-1em}
+body{font-size:10.5pt}
+div#fixedFooter{position:static}
+div#summaryBoxWrapper{border:none}
+div#summaryBox{background:none;border:none;color:#000}
+input,select{border:none;font-family:"Garamond Premier Pro","Garamond","Junicode","Crimson Text","Crimson",serif;font-size:1em}
+p.endNote{text-align:center;font-style:italic}
+}ul.kvList{width:100%}
+ul.kvList li{background-image:url("/images/dotted_toc.png");background-repeat:repeat-x;background-position:0 15px;padding:5px 0}
+ul.kvList li div.key{float:left;background-color:#fff}
+ul.kvList li div.value{float:right;background-color:#fff}
+span.badHint{font-family:Arial,sans-serif;font-size:14px;padding:.3em;background-color:#ffc8c8;border:1px solid #cd9696}
+.goodHint{opacity:0;font-family:Arial,sans-serif;font-size:14px;padding:.3em;background-color:#c8ffc8;border:1px solid #96cd96}
+.dismissHint{cursor:pointer}
+.dismissHint:before{content:"✘";color:#f00}
+.onlyWhenValid{opacity:0}

@@ -1,0 +1,22 @@
+em{font-style:italic}
+strong,b{font-weight:bold}
+th{text-align:left;font-weight:bold}
+th,td{padding:5px 1em 5px 0;height:20px}
+th:last-child,td:last-child{padding-right:0}
+body{background-color:#fff;color:#000;font-family:"Garamond Premier Pro","Garamond","Junicode","Crimson Text","Crimson",serif;line-height:20px;font-size:16px;overflow-x:hidden}
+div#contents{width:960px}
+h1{font-size:36px;line-height:1.4em;font-style:italic;text-align:center}
+h2{font-size:20px;padding:20px 0 20px 0}
+h3{font-size:18px;padding:10px 0 10px 0}
+.fullWidth{width:100%}
+.leftHalf,.rightHalf{width:50%}
+.leftHalf{float:left}
+.rightHalf{float:right}
+#summaryTable{width:100%;text-align:right}
+#summaryTable td{width:25%;padding:0 0 0 0}
+#summaryTable #pricePer{font-size:32px}
+#summaryTable #perX{text-transform:uppercase;font-size:12px;font-weight:bold}
+th.right,td.right{text-align:right}
+@media screen{.noScreen{display:none}
+}@media print{.noPrint{display:none}
+}.container_12{max-width:960px;margin:0 auto}
