@@ -1,0 +1,1362 @@
+fees:
+  2012-01-to-2013-09: &fees-2012-01-to-2013-09
+    fees:
+      morning: 31
+      afternoon: 21
+      full: 52
+      hour: 7
+      lunch: 2
+      dinner: 2
+    discount:
+      perHour: 1
+      maxPercentage: 30
+      minHoursToEnableDiscount: 0
+      appliesToMeals: true  # TODO not implemented
+    payment:
+      perMonth: 10
+      perWeek: 4
+
+  2013-09-to-2015-09: &fees-2013-09-to-2015-09
+    fees:
+      morning: 32.50
+      afternoon: 22.50
+      full: 55
+      hour: 7.50
+      lunch: 2
+      dinner: 2
+    discount:
+      perHour: 1
+      maxPercentage: 30
+      minHoursToEnableDiscount: 0
+      appliesToMeals: true  # TODO not implemented
+    payment:
+      perMonth: 10
+      perWeek: false
+
+  2015-09-onwards: &fees-2015-09-onwards
+    fees:
+      morning: 33
+      afternoon: 33
+      full: 60
+      hour: 7.50
+      lunch: 3
+      dinner: 3
+    discount:
+      perHour: 1
+      maxPercentage: 30
+      minHoursToEnableDiscount: 10
+      appliesToMeals: false  # TODO not implemented
+    payment:
+      perMonth: 10
+      perWeek: false
+
+funding:
+  2011-12: &funding-2011-12
+    funded: true
+    minimumAge: 3
+    perHour: 3.9
+    maxWeeks: 12
+    fundableHoursPerDay: 7.5
+    fundableHoursPerWeek: 15
+
+  2012-13: &funding-2012-13
+    funded: true
+    minimumAge: 3
+    perHour: 4.01
+    maxWeeks: 13
+    fundableHoursPerDay: 7.5
+    fundableHoursPerWeek: 15
+
+  2013-14: &funding-2013-14
+    funded: true
+    minimumAge: 3
+    perHour: 4.01
+    maxWeeks: 13  # TODO remove these; they're defined per-term
+    fundableHoursPerDay: 7.5
+    fundableHoursPerWeek: 15
+
+  2014-15: &funding-2014-15
+    funded: true
+    minimumAge: 3
+    perHour: 4.01
+    maxWeeks: 13 # TODO remove these; they're defined per-term
+    fundableHoursPerDay: 7.5
+    fundableHoursPerWeek: 15
+
+  2015-16: &funding-2015-16
+    funded: true
+    minimumAge: 3 # TODO funding for age 2 is defined separately; we should put this in the calculator
+    perHour: 4.01
+    maxWeeks: 13 # TODO remove these; they're defined per-term
+    fundableHoursPerDay: 7.5
+    fundableHoursPerWeek: 15
+
+  # http://dnn.essex.gov.uk/Portals/49/Documents/Information%20for%20Managers/c_%20Free%20Entitlement/ECC%20Handbook%20for%20FEEE%20April16_Final.pdf
+  #   defines funded term dates as:
+  #     Summer 2016 to be taken between 11/04/2016 to 22/07/2016 and not to exceed 13 weeks
+  #     Autumn 2016 to be taken between 01/09/2016 to 21/12/2016 and not to exceed 14 weeks
+  #     Spring 2017 to be taken between 05/01/2017 to 31/03/2017 and not to exceed 11 weeks
+  #  defines headcount dates as:
+  #     Summer 2016 headcount date 5 May 2016 to be submitted by 11 May 2016
+  #     Autumn 2016 headcount date 9 September 2016 to be submitted by 15 September 2016
+  #     Spring 2017 headcount date 19 January 2017 to be submitted by 25 January 2017
+  2016-17: &funding-2016-17
+    funded: true
+    minimumAge: 3 # TODO funding for age 2 is defined separately; we should put this in the calculator
+    perHour: 4.01 # TODO IS THIS TRUE? ABOVE DOCUMENT SAYS THIS IS FOR 2015
+    maxWeeks: 13 # TODO remove these; they're defined per-term
+    fundableHoursPerDay: 10  # new max hours per day!
+    fundableHoursPerWeek: 15
+
+terms:
+
+###############
+### 2010-11 ###
+###############
+
+# Autumn Term
+
+# Spring Term
+
+# Summer Term
+
+# - year: 2010
+#   season: "summer"
+#   type: "term"
+#   dates:
+#     interval:
+#       - "2011-04-25"
+#       - "2011-07-22"
+#     holes:
+#       -
+#         - "2011-05-30"
+#         - "2011-06-03"
+#   fees:
+#     morning: 29.5
+#     afternoon: 19.5
+#     full: 45
+#     hour: 6.5
+#   discount:
+#     perHour: 1
+#     maxPercentage: 30
+#   payment:
+#     perMonth: 10
+#     perWeek: 4
+#   funding:
+#     funded: true
+#     headcount: "2011-05-19"
+#     cutoff: "2011-03-31"
+#     minimumAge: 3
+#     perHour: 3.9
+#     maxWeeks: 12
+#   minimumAge: 2
+
+# - year: 2010
+#   season: "summer"
+#   type: "holiday"
+#   dates:
+#     interval:
+#       - "2011-07-25"
+#       - "2011-09-02"
+#     holes: []
+#   fees:
+#     morning: 29.5
+#     afternoon: 19.5
+#     full: 45
+#     hour: 6.5
+#   discount:
+#     perHour: 1
+#     maxPercentage: 30
+#   payment:
+#     perMonth: 10
+#     perWeek: 4
+#   funding:
+#     funded: false
+#   minimumAge: 2
+
+###############
+### 2011-12 ###
+###############
+
+# Autumn Term
+# -
+#   year: 2011
+#   season: "autumn"
+#   type: "term"
+#   dates:
+#     interval:
+#       - "2011-09-05"
+#       - "2011-12-16"
+#     holes:
+#       -
+#         - "2011-10-24"
+#         - "2011-10-28"
+#   fees:
+#     morning: 29.5
+#     afternoon: 19.5
+#     full: 45
+#     hour: 6.5
+#   discount:
+#     perHour: 1
+#     maxPercentage: 30
+#   payment:
+#     perMonth: 10
+#     perWeek: 4
+#   funding:
+#     funded: true
+#     headcount: "2011-10-06"
+#     cutoff: "2011-08-31"
+#     minimumAge: 3
+#     perHour: 3.9
+#     maxWeeks: 14
+#   minimumAge: 2
+# -
+#   year: 2011
+#   season: "autumn"
+#   type: "holiday"
+#   dates:
+#     interval:
+#       - "2011-12-19"
+#       - "2011-12-30"
+#     holes: []
+#   fees:
+#     morning: 29.5
+#     afternoon: 19.5
+#     full: 45
+#     hour: 6.5
+#   discount:
+#     perHour: 1
+#     maxPercentage: 30
+#   payment:
+#     perMonth: 10
+#     perWeek: 4
+#   funding:
+#     funded: false
+#   minimumAge: 2
+
+# Spring Term
+
+# -
+#   year: 2011
+#   season: "spring"
+#   type: "term"
+#   dates:
+#     interval:
+#       - "2012-01-02"
+#       - "2012-03-30"
+#     holes:
+#       - "2012-01-02"
+#       -
+#         - "2012-02-13"
+#         - "2012-02-17"
+#   fees:
+#     morning: 29.5
+#     afternoon: 19.5
+#     full: 45
+#     hour: 6.5
+#   discount:
+#     perHour: 1
+#     maxPercentage: 30
+#   payment:
+#     perMonth: 10
+#     perWeek: 4
+#   funding:
+#     funded: true
+#     headcount: "2012-01-19"
+#     cutoff: "2011-12-31"
+#     <<: *funding-2011-12
+#   minimumAge: 2
+# -
+#   year: 2011
+#   season: "spring"
+#   type: "term"
+#   babyroom: true
+#   dates:
+#     interval:
+#       - "2012-01-02"
+#       - "2012-03-30"
+#     holes:
+#       - "2012-01-02"
+#       -
+#         - "2012-02-13"
+#         - "2012-02-17"
+#   fees:
+#     morning: 31
+#     afternoon: 21
+#     full: 52
+#     hour: 7
+#   discount:
+#     perHour: 1
+#     maxPercentage: 30
+#   payment:
+#     perMonth: 10
+#     perWeek: 4
+#   funding:
+#     funded: false
+#   minimumAge: 2
+# -
+#   year: 2011
+#   season: "spring"
+#   type: "holiday"
+#   dates:
+#     interval:
+#       - "2012-04-02"
+#       - "2012-04-13"
+#     holes:
+#       - "2012-04-06"
+#       - "2012-04-09"
+#   fees:
+#     morning: 29.5
+#     afternoon: 19.5
+#     full: 45
+#     hour: 6.5
+#   discount:
+#     perHour: 1
+#     maxPercentage: 30
+#   payment:
+#     perMonth: 10
+#     perWeek: 4
+#   funding:
+#     funded: false
+#   minimumAge: 0
+# -
+#   year: 2011
+#   season: "spring"
+#   type: "holiday"
+#   babyroom: true
+#   dates:
+#     interval:
+#       - "2012-04-02"
+#       - "2012-04-13"
+#     holes:
+#       - "2012-04-06"
+#       - "2012-04-09"
+#   fees:
+#     morning: 31
+#     afternoon: 21
+#     full: 52
+#     hour: 7
+#   discount:
+#     perHour: 1
+#     maxPercentage: 30
+#   payment:
+#     perMonth: 10
+#     perWeek: 4
+#   funding:
+#     funded: false
+#   minimumAge: 0
+
+# Summer Term
+
+- year: 2011
+  season: summer
+  type: term
+  provisional: false
+  dates:
+    interval: [2012-04-16, 2012-07-20]
+    holes:
+      - 2012-05-07
+      - [2012-06-04, 2012-06-08]
+  funding:
+    headcount: 2012-06-19
+    cutoff: 2012-03-30
+    <<: *funding-2012-13
+  minimumAge: 0
+  <<: *fees-2012-01-to-2013-09
+
+- year: 2011
+  season: summer
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2012-06-06, 2012-06-08]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2012-01-to-2013-09
+
+- year: 2011
+  season: summer
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2012-07-23, 2012-08-31]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2012-01-to-2013-09
+
+###############
+### 2012-13 ###
+###############
+
+# Autumn Term
+
+- year: 2012
+  season: autumn
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2012-09-03, 2012-12-14]
+    holes:
+    - [2012-10-29, 2012-11-02]
+  funding:
+    headcount: 2011-09-20
+    maxWeeks: 14
+    <<: *funding-2012-13
+  minimumAge: 2
+  <<: *fees-2012-01-to-2013-09
+
+- year: 2012
+  season: autumn
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2012-09-03, 2013-01-04]
+    holes:
+    - [2012-12-24, 2012-12-28]
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2012-01-to-2013-09
+
+- year: 2012
+  season: autumn
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2012-10-29, 2012-11-02]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2012-01-to-2013-09
+
+- year: 2012
+  season: autumn
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2012-12-17, 2013-01-04]
+    holes:
+    - [2012-12-24, 2012-12-28]
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2012-01-to-2013-09
+
+# Spring Term
+
+- year: 2012
+  season: spring
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2013-01-07, 2013-03-28]
+    holes:
+    - [2013-02-18, 2013-02-22]
+  funding:
+    headcount: 2013-01-17
+    maxWeeks: 11
+    <<: *funding-2012-13
+  minimumAge: 2
+  <<: *fees-2012-01-to-2013-09
+
+- year: 2012
+  season: spring
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2013-01-07, 2013-04-12]
+    holes:
+    - [2012-03-29, 2012-05-01]
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2012-01-to-2013-09
+
+- year: 2012
+  season: spring
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2013-02-18, 2013-02-22]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2012-01-to-2013-09
+
+- year: 2012
+  season: spring
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2013-04-02, 2013-04-12]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2012-01-to-2013-09
+
+# Summer Term
+
+- year: 2012
+  season: summer
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2013-04-15, 2013-07-19]
+    holes:
+    - 2013-05-06
+    - 2013-05-27
+    - [2013-05-27, 2013-05-31]
+    - 2013-08-26
+  funding:
+    headcount: 2013-04-25
+    maxWeeks: 13 # TODO
+    <<: *funding-2013-14
+  minimumAge: 2
+  <<: *fees-2012-01-to-2013-09
+
+- year: 2012
+  season: summer
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2013-04-15, 2013-08-30]
+    holes:
+    - 2013-05-06
+    - 2013-05-27
+    - 2013-08-26
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2012-01-to-2013-09
+
+- year: 2012
+  season: summer
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2013-05-28, 2013-05-31]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2012-01-to-2013-09
+
+- year: 2012
+  season: summer
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2013-07-22, 2013-08-30]
+    holes:
+    - 2013-08-26
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2012-01-to-2013-09
+
+###############
+### 2013-14 ###
+###############
+
+# https://www.essex.gov.uk/Education-Schools/Schools/Dates/Documents/term_dates_2013_2014.pdf
+
+# Autumn Term
+
+- year: 2013
+  season: autumn
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2013-09-02, 2013-12-13]
+    holes:
+    - [2013-10-28, 2013-11-01]
+  funding:
+    headcount: 2013-09-19
+    maxWeeks: 14
+    <<: *funding-2013-14
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2013
+  season: autumn
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2013-09-02, 2014-01-03]
+    holes:
+    - 2013-12-25
+    - 2013-12-26
+    - 2014-01-01
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2013
+  season: autumn
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2013-10-28, 2013-11-01]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2013
+  season: autumn
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2013-12-16, 2014-01-03]
+    holes:
+    - 2013-12-25
+    - 2013-12-26
+    - 2014-01-01
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+# Spring Term
+
+- year: 2013
+  season: spring
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2014-01-06, 2014-04-04]
+    holes:
+    - [2014-02-17, 2014-02-21]
+  funding:
+    headcount: 2014-01-16
+    maxWeeks: 12
+    <<: *funding-2013-14
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2013
+  season: spring
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2014-01-06, 2014-04-17]
+    holes:
+    - 2014-04-18
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2013
+  season: spring
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2014-02-17, 2014-02-21]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2013
+  season: spring
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2014-04-07, 2014-04-17]
+    holes:
+    - 2013-04-18
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+# Summer Term
+
+- year: 2013
+  season: summer
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2014-04-22, 2014-07-18]
+    holes:
+    - [2014-05-26, 2014-05-30]
+    - 2014-05-05
+    - 2014-05-26
+  funding:
+    headcount: 2014-05-01
+    maxWeeks: 12
+    <<: *funding-2014-15
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2013
+  season: summer
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2014-04-22, 2014-08-29]
+    holes:
+    - 2014-05-05
+    - 2014-05-26
+    - 2014-08-25
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2013
+  season: summer
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2014-05-27, 2014-05-30]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2013
+  season: summer
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2014-07-21, 2014-09-02]
+    holes:
+    - 2014-08-25
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+
+###############
+### 2014-15 ###
+###############
+
+# http://www.essex.gov.uk/Education-Schools/Schools/Dates/Documents/term_dates_2014_2015.pdf
+
+# Autumn Term
+
+- year: 2014
+  season: autumn
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2014-09-03, 2014-12-19]
+    holes:
+    - [2014-10-27, 2014-10-31]
+  funding:
+    headcount: 2014-09-18
+    maxWeeks: 15
+    <<: *funding-2014-15
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2014
+  season: autumn
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2014-09-03, 2015-01-02]
+    holes:
+    - [2014-12-24, 2015-01-01]
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2014
+  season: autumn
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2014-10-27, 2014-10-31]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2014
+  season: autumn
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2014-12-22, 2015-01-02]
+    holes:
+    - [2014-12-24, 2015-01-01]
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+# Spring Term
+
+- year: 2014
+  season: spring
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2015-01-05, 2015-03-27]
+    holes:
+    - [2015-02-16, 2015-02-20]
+  funding:
+    headcount: 2015-01-15
+    maxWeeks: 11
+    <<: *funding-2014-15
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2014
+  season: spring
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2015-01-05, 2015-04-10]
+    holes:
+    - 2015-04-03
+    - 2015-04-06
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2014
+  season: spring
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2015-02-16, 2015-02-20]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2014
+  season: spring
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2015-03-30, 2015-04-10]
+    holes:
+    - 2015-04-03
+    - 2015-04-06
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+# Summer Term
+
+- year: 2014
+  season: summer
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2015-04-13, 2015-07-17]
+    holes:
+    - [2015-05-25, 2015-05-29]
+    - 2015-05-04
+  funding:
+    headcount: 2015-05-17
+    maxWeeks: 13
+    <<: *funding-2015-16
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2014
+  season: summer
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2015-04-13, 2015-09-04]
+    holes:
+    - 2015-05-04
+    - 2015-05-25
+    - 2015-08-31
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2014
+  season: summer
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2015-05-25, 2015-05-29] # TODO
+    holes:
+    - 2015-05-25
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+- year: 2014
+  season: summer
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2015-07-20, 2015-09-04]
+    holes:
+    - 2015-08-31
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2013-09-to-2015-09
+
+
+###############
+### 2015-16 ###
+###############
+
+# http://www.essex.gov.uk/Education-Schools/Schools/Dates/Documents/term_dates_2015-16.pdf
+
+# Autumn Term
+
+- year: 2015
+  season: autumn
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2015-09-07, 2015-12-18]
+    holes:
+    - [2015-10-26, 2015-10-30]
+  funding:
+    headcount: 2015-09-17
+    maxWeeks: 14
+    <<: *funding-2015-16
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2015
+  season: autumn
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2015-09-07, 2015-12-23]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2015-09-onwards
+
+- year: 2015
+  season: autumn
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2015-10-26, 2015-10-30]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2015
+  season: autumn
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2015-12-21, 2015-12-23]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+# This is the union of the above autumn term, halfterm, and holiday
+- year: 2015
+  season: autumn
+  type: termhalftermandholidayclub
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2015-09-07, 2015-12-23]
+    holes: []
+  funding:
+    headcount: 2015-09-17
+    maxWeeks: 14
+    <<: *funding-2015-16
+  minimumAge: 2 # TODO what does this mean
+  <<: *fees-2015-09-onwards
+
+# Spring Term
+
+- year: 2015
+  season: spring
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2016-01-04, 2016-03-24]
+    holes:
+    - [2016-02-15, 2016-02-19]
+  funding:
+    headcount: 2016-01-21
+    maxWeeks: 11
+    <<: *funding-2015-16
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2015
+  season: spring
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2016-01-04, 2016-04-08]
+    holes:
+    - 2016-03-25
+    - 2016-03-28
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2015-09-onwards
+
+- year: 2015
+  season: spring
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2016-02-15, 2016-02-19]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2015
+  season: spring
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2016-03-29, 2016-04-08]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+# Summer Term
+
+# must satisfy: Summer 2016 to be taken between 11/04/2016 to 22/07/2016 and not to exceed 13 weeks
+
+- year: 2015
+  season: summer
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2016-04-11, 2016-07-15]
+    holes:
+    - 2016-05-02
+    - [2016-05-30, 2016-06-03]
+  funding:
+    headcount: 2016-05-05
+    maxWeeks: 13
+    <<: *funding-2016-17
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2015
+  season: summer
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2016-04-11, 2016-09-02]
+    holes:
+    - 2016-05-02
+    - 2016-05-30
+    - 2016-08-29
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2015-09-onwards
+
+- year: 2015
+  season: summer
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2016-05-31, 2016-06-03]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2015
+  season: summer
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2016-07-18, 2016-09-02]
+    holes:
+    - 2016-08-29
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+###############
+### 2016-17 ###
+###############
+
+# https://www.essex.gov.uk/Education-Schools/Schools/Dates/Documents/SchoolTermDates-2016-2017.pdf
+#   defines term dates as:
+#   Autumn term:
+#     2016-09-01 to 2016-12-21 inclusive
+#     half-term 2016-10-24 to 2016-10-28 inclusive
+#     public holidays 2016-12-26, 2016-12-27 and 2017-01-02
+#   Christmas holiday:
+#     2016-12-22 to 2017-01-04 inclusive
+#     public holidays 2016-12-26, 2016-12-27 and 2017-01-02
+#   Spring term:
+#     2017-01-05 to 2017-03-31 inclusive
+#     half-term 2017-02-13 to 2017-02-17 inclusive
+#   Spring holiday:
+#     2017-04-03 to 2017-04-17 inclusive
+#     public holidays 2017-04-14 and 2017-04-17
+#     TODO wouldn't it be better to shift these two weeks forward one week to cover both public hols?
+#       nope, funding restricts us from doing this
+#   Summer term:
+#     2017-04-18 to 2017-07-21 inclusive
+#     half-term 2017-05-29 to 2017-06-02 inclusive
+#     public holidays 2017-05-29
+#   Summer holiday:
+#     2017-07-24 to 2017-08-31 ... ?
+#     public holidays 2017-08-28
+
+# Autumn Term
+
+# must satisfy: Autumn 2016 to be taken between 01/09/2016 to 21/12/2016 and not to exceed 14 weeks
+# must satisfy: Autumn 2016 headcount date 9 September 2016 to be submitted by 15 September 2016
+
+- year: 2016
+  season: autumn
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2016-09-05, 2016-12-16]
+    holes:
+    - [2016-10-24, 2016-10-28]
+  funding:
+    headcount: 2016-09-09
+    maxWeeks: 14
+    <<: *funding-2016-17
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2016
+  season: autumn
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2016-09-05, 2017-01-06]
+    holes:
+    - [2016-12-26, 2017-01-02]
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2015-09-onwards
+
+- year: 2016
+  season: autumn
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2016-10-24, 2016-10-28]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2016
+  season: autumn
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2016-12-19, 2017-01-06]
+    holes:
+    - [2016-12-26, 2017-01-02]
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+# This is the union of the above autumn term, halfterm, and holiday
+- year: 2016
+  season: autumn
+  type: termhalftermandholidayclub
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2016-09-05, 2017-01-06]
+    holes:
+    - [2016-12-26, 2017-01-02]
+  funding:
+    headcount: 2016-09-09
+    maxWeeks: 14
+    <<: *funding-2015-16
+  minimumAge: 2 # TODO what does this mean
+  <<: *fees-2015-09-onwards
+
+# Spring Term
+
+# https://www.essex.gov.uk/Education-Schools/Schools/Dates/Documents/SchoolTermDates-2016-2017.pdf
+#     2017-01-05 to 2017-03-31 inclusive
+#     half-term 2017-02-13 to 2017-02-17 inclusive
+
+# must satisfy: Spring 2017 to be taken between 05/01/2017 to 31/03/2017 and not to exceed 11 weeks
+# must satisfy: Spring 2017 headcount date 19 January 2017 to be submitted by 25 January 2017
+
+- year: 2016
+  season: spring
+  type: term
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2017-01-09, 2017-03-31]
+    holes:
+    - [2017-02-13, 2017-02-17]
+  funding:
+    headcount: 2017-01-19
+    maxWeeks: 11
+    <<: *funding-2016-17
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2016
+  season: spring
+  type: term
+  babyroom: true
+  provisional: false
+  dates:
+    interval: [2017-01-09, 2017-04-13]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2015-09-onwards
+
+- year: 2016
+  season: spring
+  type: halfterm
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2017-02-13, 2017-02-17]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2016
+  season: spring
+  type: holiday
+  babyroom: false
+  provisional: false
+  dates:
+    interval: [2017-04-03, 2017-04-13]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+# Summer Term
+
+# https://www.essex.gov.uk/Education-Schools/Schools/Dates/Documents/SchoolTermDates-2016-2017.pdf
+#   Summer term:
+#     2017-04-18 to 2017-07-21 inclusive
+#     half-term 2017-05-29 to 2017-06-02 inclusive
+#     public holidays 2017-05-29
+#   Summer holiday:
+#     2017-07-24 to 2017-08-31 ... ?
+#     public holidays 2017-08-28
+
+# TODO we don't have funding info for this term so we don't know how long it has to be
+
+- year: 2016
+  season: summer
+  type: term
+  babyroom: false
+  provisional: true
+  dates:
+    interval: [2017-04-18, 2017-07-21]  # TODO end date; requires funding info
+    holes:
+    - 2017-05-01
+    - [2017-05-29, 2017-06-02]
+  funding:
+    headcount: 2017-05-05  # TODO requires funding info
+    maxWeeks: 13  # TODO needs funding info
+    <<: *funding-2016-17  # FIXME should be 2017-18
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2016
+  season: summer
+  type: term
+  babyroom: true
+  provisional: true
+  dates:
+    interval: [2017-04-18, 2017-09-01]  # TODO end date; requires funding info
+    holes:
+    - 2017-05-01
+    - 2017-05-29
+    - 2017-08-28
+  funding: { funded: false }
+  minimumAge: 0
+  <<: *fees-2015-09-onwards
+
+- year: 2016
+  season: summer
+  type: halfterm
+  babyroom: false
+  provisional: true
+  dates:
+    interval: [2017-05-30, 2017-06-02]
+    holes: []
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+- year: 2016
+  season: summer
+  type: holiday
+  babyroom: false
+  provisional: true
+  dates:
+    interval: [2017-07-24, 2017-09-01]  # TODO end date; requires funding info
+    holes:
+    - 2017-08-28
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-onwards
+
+###############
+### 2017-18 ###
+###############

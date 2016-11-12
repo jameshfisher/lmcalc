@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Calculator</title>
+
+  <meta charset="utf-8"/>
+
+  <script src="public/vendor/js-yaml.min.js" type="text/javascript"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js" type="text/javascript"></script>
+
+  <script data-main="public/scripts/calculator_ui" src="public/vendor/requirejs/require.js" type="text/javascript"></script>
+
+  <link href="public/vendor/fluid960/css/grid.css" rel="stylesheet" type="text/css">
+  <link href="public/vendor/formalize/css/formalize.css" rel="stylesheet" type="text/css">
+  <link href="public/vendor/tipsy/src/stylesheets/tipsy.css" rel="stylesheet" type="text/css">
+
+  <link href="public/stylesheets/reset.css" rel="stylesheet" type="text/css">
+  <link href="public/stylesheets/main.css" rel="stylesheet" type="text/css">
+  <link href="public/stylesheets/calculator.css" rel="stylesheet" type="text/css">
+
+  <link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600&amp;subset=latin&amp;v2" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <script type="text/javascript">
+$("body").css("opacity", 0);
+  </script>
+
+  <form>
+    <div class="container_12">
+      <div class="grid_4 alpha">
+        <h1 class="noScreen">Invoice for <span class="childFullname">child name</span> for <span class=
+        "termName">term</span></h1>
+
+        <div class="stage1 noPrint">
+          <h2>A little about your child</h2>
+
+          <table>
+            <tbody>
+              <tr>
+                <th><label for="child.dob">Date of birth</label></th>
+
+                <td colspan="2">
+                  <input type="text" name="child.dob" style="width: 100%" class="datepicker">
+
+                  <p class="tipText">How old is <span class="childForename">your child</span>?</p>
+                </td>
+              </tr>
+
+              <tr>
+                <th>Name</th>
+
+                <td><input name="child.forename" type="text" style="width: 5em"></td>
+
+                <td><input name="child.surname" type="text" style="width: 5em"></td>
+              </tr>
+
+              <tr>
+                <th><label for="child.siblingHours">Siblings&rsquo; hours</label></th>
+
+                <td colspan="2"><input name="child.siblingHours" type="number" value="0" min="0" step="0.5"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="stage2">
+          <h2 class="noPrint">Select a term</h2>
+
+          <table>
+            <tbody>
+              <tr class="noPrint">
+                <td colspan="4">
+                  <select name="term.which" style="width:100%">
+                    </select>
+
+                  <p class="tipText"><span class="childForename">Your child</span> must be at least on the first day of
+                  attendance.</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td>from</td>
+
+                <td><input type="text" name="attendance.start" class="datepicker"></td>
+
+                <td>until</td>
+
+                <td><input type="text" name="attendance.end" class="datepicker"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p id="termDates">&nbsp;</p>
+
+          <p id="termHoles">&nbsp;</p>
+        </div>
+      </div>
+
+      <div class="grid_3 termInfo">
+        <h3 class="stage3">FEEE funding</h3>
+
+        <ul class="kvList stage3">
+          <li class="noPrint">
+            <div class="key">
+              <span class="tipName">Headcount date</span>
+
+              <p class="tipText"><span class="childForename">Your child</span> must start attendance on or before this
+              date to gain funding.</p>
+            </div>
+
+            <div id="termFundingHeadcount" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li class="noPrint">
+            <div class="key">
+              <span class="tipName">Cutoff date</span>
+
+              <p class="tipText"><span class="childForename">Your child</span> must satisfy the minimum age (below) on
+              this date to gain funding.</p>
+            </div>
+
+            <div id="termFundingCutoff" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li class="noPrint">
+            <div class="key">
+              <span class="tipName">Minimum age</span>
+
+              <p class="tipText"><span class="childForename">Your child</span> must be this age or greater on the above
+              date to gain funding.</p>
+            </div>
+
+            <div id="termFundingMinimumAge" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li class="noPrint">
+            <div class="key">
+              <span class="tipName">Funding per hour</span>
+
+              <p class="tipText">FEEE will fund <span class="childForename">Your child</span> to this amount per hour of
+              funded attendance (calculated below).</p>
+            </div>
+
+            <div id="termFundingPerHour" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              <span class="tipName">Maximum weeks</span>
+
+              <p class="tipText">FEEE will not fund any more than this number of weeks&rsquo; funding. Don&rsquo;t worry!&mdash;we set our
+              term dates so that this will never be an issue.</p>
+            </div>
+
+            <div id="termFundingMaxWeeks" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li class="noPrint">
+            <div class="key">
+              <span class="tipName">Age at cutoff date</span>
+
+              <p class="tipText"><span class="childForename">Your child</span>&rsquo;s age at the cutoff date defined by FEEE
+              for this term.</p>
+            </div>
+
+            <div id="ageAtFundingCutoff" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li class="noPrint">
+            <div class="key">
+              <span class="tipName">Eligible for funding</span>
+
+              <p class="tipText">Whether <span class="childForename">your child</span>&rsquo;s age meets the minimum defined
+              by FEEE for this term and <span class="childForename">your child</span> started attending on or before the
+              headcount date.</p>
+            </div>
+
+            <div id="eligibleForFunding" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="grid_3">
+        <h3 class="stage4">&nbsp;</h3>
+
+        <ul class="kvList stage4">
+          <li>
+            <div class="key">
+              <span class="tipName">Attended days per week</span>
+
+              <p class="tipText">Number of days in the week in which <span class="childForename">your child</span>
+              takes at least one session.</p>
+            </div>
+
+            <div id="weeklyDaysAttending" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              <span class="tipName">Max. fundable hours/week</span>
+
+              <p class="tipText">The number of hours per week for which you can claim funding. This is zero if
+              <span class="childForename">your child</span> is not eligible; it is determined by the number of days
+              attended per week.</p>
+            </div>
+
+            <div id="weeklyFundableHours" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              <span class="tipName">Funded hours</span>
+
+              <p class="tipText">The total number of hours that <span class="childForename">your child</span> is in
+              attendance per week, at the maximum fundable hours per week.</p>
+            </div>
+
+            <div id="weeklyFundedHours" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li class="noPrint">
+            <div class="key">
+              <span class="tipName">Funding per week</span>
+
+              <p class="tipText">The above number of funded hours multiplied by the funding per hour defined by
+              FEEE.</p>
+            </div>
+
+            <div id="weeklyFunding" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              <span class="tipName">Funded weeks attended</span>
+
+              <p class="tipText">The number of weeks <span class="childForename">your child</span> is in attendance,
+              clipped at the maximum fundable weeks defined by FEEE.</p>
+            </div>
+
+            <div id="fundedWeeks" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li class="noPrint">
+            <div class="key">
+              <span class="tipName">Funding per term</span>
+
+              <p class="tipText">The above funding per week multiplied by the number of funded weeks attended.</p>
+            </div>
+
+            <div class="value">
+              <strong id="termlyFunding"></strong>
+            </div>
+
+            <div class="clear"></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="grid_2 omega">
+        <h3 class="stage4">Our discount</h3>
+
+        <ul class="kvList stage4">
+          <li>
+            <div class="key">
+              <span class="tipName">Per hour</span>
+
+              <p class="tipText">For every hour <span class="childForename">your child</span> attends per week, we add
+              1% to our discount!</p>
+            </div>
+
+            <div id="termDiscountPerHour" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              <span class="tipName">Maximum</span>
+
+              <p class="tipText">We don't give you a 100% discount for 100 hours per week!</p>
+            </div>
+
+            <div class="value termDiscountMaxPercentage"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              <span class="tipName">Hours/week</span>
+
+              <p class="tipText">The total hours in a full week that <span class="childForename">your child</span> is
+              in nursery.</p>
+            </div>
+
+            <div id="weeklyHours" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              <span class="tipName">+ siblings&rsquo;</span>
+
+              <p class="tipText">The above value plus the number of hours that <span class="childForename">your
+              child</span>&rsquo;s siblings attend per week.</p>
+            </div>
+
+            <div id="weeklyFamilyHours" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              <span class="tipName">% discount</span>
+
+              <p class="tipText">The above value as a percentage, capped at <span class=
+              "termDiscountMaxPercentage">&nbsp;</span>.</p>
+            </div>
+
+            <div id="percentageDiscount" class="value"></div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              <span class="tipName">Discount</span>
+
+              <p class="tipText">The basic fee per term multiplied by the above percentage discount.</p>
+            </div>
+
+            <div class="value">
+              <strong id="termlyDiscount"></strong>
+            </div>
+
+            <div class="clear"></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+    <div class="container_12 stage3">
+      <div class="grid_12 alpha omega">
+        <h2 id="weeklySessionsHeader">Weekly sessions</h2>
+      </div>
+    </div>
+
+    <div class="container_12">
+      <div class="grid_6 alpha stage3">
+        <table style="width: 100%;">
+          <thead>
+            <tr>
+              <th style="width:80px"></th>
+
+              <th style="width:240px" colspan="3">
+                <span class="tipName">Attendance</span>
+
+                <p class="tipText">The drop-off and pick-up times for <span class="childForename">your child</span> for
+                this day of the week.</p>
+              </th>
+
+              <th style="width:80px">
+                <span class="tipName">Session</span>
+
+                <p class="tipText">Our morning session runs 09:00&mdash;12:00, our afternoon session from 12:00&mdash;15:00, and a
+                full day covers morning and afternoon.</p>
+              </th>
+
+              <th style="width:80px" class="right">
+                <span class="tipName">Hours</span>
+
+                <p class="tipText">Any hours taken that do not fall in a session.</p>
+              </th>
+
+              <th>Lunch</th>
+
+              <th>Dinner</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th><label>Mon.</label></th>
+
+              <td><select name="mon.start" class="timepicker">
+                <option value="08:00">
+                  08:00
+                </option>
+
+                <option value="08:30">
+                  08:30
+                </option>
+
+                <option value="09:00">
+                  09:00
+                </option>
+
+                <option value="12:00" selected="true">
+                  12:00
+                </option>
+              </select></td>
+
+              <td>til</td>
+
+              <td><select name="mon.end" class="timepicker">
+                <option value="12:00">
+                  12:00
+                </option>
+
+                <option value="15:00">
+                  15:00
+                </option>
+
+                <option value="15:30">
+                  15:30
+                </option>
+
+                <option value="16:00">
+                  16:00
+                </option>
+
+                <option value="16:30">
+                  16:30
+                </option>
+
+                <option value="17:00">
+                  17:00
+                </option>
+
+                <option value="17:30">
+                  17:30
+                </option>
+
+                <option value="18:00">
+                  18:00
+                </option>
+              </select></td>
+
+              <td><span id="mon.session"></span></td>
+
+              <td class="right"><span id="mon.extraHours"></span></td>
+
+              <td><input type="checkbox" name="mon.lunch"></td>
+
+              <td><input type="checkbox" name="mon.dinner"></td>
+            </tr>
+
+            <tr>
+              <th><label>Tue.</label></th>
+
+              <td><select name="tue.start" class="timepicker">
+                <option value="08:00">
+                  08:00
+                </option>
+
+                <option value="08:30">
+                  08:30
+                </option>
+
+                <option value="09:00">
+                  09:00
+                </option>
+
+                <option value="12:00" selected="true">
+                  12:00
+                </option>
+              </select></td>
+
+              <td>til</td>
+
+              <td><select name="tue.end" class="timepicker">
+                <option value="12:00">
+                  12:00
+                </option>
+
+                <option value="15:00">
+                  15:00
+                </option>
+
+                <option value="15:30">
+                  15:30
+                </option>
+
+                <option value="16:00">
+                  16:00
+                </option>
+
+                <option value="16:30">
+                  16:30
+                </option>
+
+                <option value="17:00">
+                  17:00
+                </option>
+
+                <option value="17:30">
+                  17:30
+                </option>
+
+                <option value="18:00">
+                  18:00
+                </option>
+              </select></td>
+
+              <td><span id="tue.session"></span></td>
+
+              <td class="right"><span id="tue.extraHours"></span></td>
+
+              <td><input type="checkbox" name="tue.lunch"></td>
+
+              <td><input type="checkbox" name="tue.dinner"></td>
+            </tr>
+
+            <tr>
+              <th><label>Wed.</label></th>
+
+              <td><select name="wed.start" class="timepicker">
+                <option value="08:00">
+                  08:00
+                </option>
+
+                <option value="08:30">
+                  08:30
+                </option>
+
+                <option value="09:00">
+                  09:00
+                </option>
+
+                <option value="12:00" selected="true">
+                  12:00
+                </option>
+              </select></td>
+
+              <td>til</td>
+
+              <td><select name="wed.end" class="timepicker">
+                <option value="12:00">
+                  12:00
+                </option>
+
+                <option value="15:00">
+                  15:00
+                </option>
+
+                <option value="15:30">
+                  15:30
+                </option>
+
+                <option value="16:00">
+                  16:00
+                </option>
+
+                <option value="16:30">
+                  16:30
+                </option>
+
+                <option value="17:00">
+                  17:00
+                </option>
+
+                <option value="17:30">
+                  17:30
+                </option>
+
+                <option value="18:00">
+                  18:00
+                </option>
+              </select></td>
+
+              <td><span id="wed.session"></span></td>
+
+              <td class="right"><span id="wed.extraHours"></span></td>
+
+              <td><input type="checkbox" name="wed.lunch"></td>
+
+              <td><input type="checkbox" name="wed.dinner"></td>
+            </tr>
+
+            <tr>
+              <th><label>Thu.</label></th>
+
+              <td><select name="thu.start" class="timepicker">
+                <option value="08:00">
+                  08:00
+                </option>
+
+                <option value="08:30">
+                  08:30
+                </option>
+
+                <option value="09:00">
+                  09:00
+                </option>
+
+                <option value="12:00" selected="true">
+                  12:00
+                </option>
+              </select></td>
+
+              <td>til</td>
+
+              <td><select name="thu.end" class="timepicker">
+                <option value="12:00">
+                  12:00
+                </option>
+
+                <option value="15:00">
+                  15:00
+                </option>
+
+                <option value="15:30">
+                  15:30
+                </option>
+
+                <option value="16:00">
+                  16:00
+                </option>
+
+                <option value="16:30">
+                  16:30
+                </option>
+
+                <option value="17:00">
+                  17:00
+                </option>
+
+                <option value="17:30">
+                  17:30
+                </option>
+
+                <option value="18:00">
+                  18:00
+                </option>
+              </select></td>
+
+              <td><span id="thu.session"></span></td>
+
+              <td class="right"><span id="thu.extraHours"></span></td>
+
+              <td><input type="checkbox" name="thu.lunch"></td>
+
+              <td><input type="checkbox" name="thu.dinner"></td>
+            </tr>
+
+            <tr>
+              <th><label>Fri.</label></th>
+
+              <td><select name="fri.start" class="timepicker">
+                <option value="08:00">
+                  08:00
+                </option>
+
+                <option value="08:30">
+                  08:30
+                </option>
+
+                <option value="09:00">
+                  09:00
+                </option>
+
+                <option value="12:00" selected="true">
+                  12:00
+                </option>
+              </select></td>
+
+              <td>til</td>
+
+              <td><select name="fri.end" class="timepicker">
+                <option value="12:00">
+                  12:00
+                </option>
+
+                <option value="15:00">
+                  15:00
+                </option>
+
+                <option value="15:30">
+                  15:30
+                </option>
+
+                <option value="16:00">
+                  16:00
+                </option>
+
+                <option value="16:30">
+                  16:30
+                </option>
+
+                <option value="17:00">
+                  17:00
+                </option>
+
+                <option value="17:30">
+                  17:30
+                </option>
+
+                <option value="18:00">
+                  18:00
+                </option>
+              </select></td>
+
+              <td><span id="fri.session"></span></td>
+
+              <td class="right"><span id="fri.extraHours"></span></td>
+
+              <td><input type="checkbox" name="fri.lunch"></td>
+
+              <td><input type="checkbox" name="fri.dinner"></td>
+            </tr>
+
+            <tr class="totalRow">
+              <td></td>
+
+              <td colspan="5">
+                <div class="tipsy tipsy-n">
+                  <div id="hintMinimumSessions" class="tipsy-inner">
+                    &nbsp;
+                  </div>
+                </div>
+
+                <p class="tipText">In term-time (not in Holiday Club), we require one more weekly session than
+                <span class="childForename">your child</span>&rsquo;s age&mdash;for this term, <span id="minimumSessions"></span>.
+                You have selected <span id="weeklySessions"></span>, so please select <span id=
+                "requiredExtraSessions"></span> more.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid_6 omega stage4">
+        <table style="width: 100%;">
+          <thead>
+            <tr>
+              <th style="width:50%" class="right noPrint">
+                <span class="tipName">Daily fee</span>
+
+                <p class="tipText">The total of the prices for each session for this weekday.</p>
+              </th>
+
+              <th style="width:25%" class="right">
+                <span class="tipName">Days/term</span>
+
+                <p class="tipText">The number of this weekday <span class="childForename">your child</span> is
+                attending this term.</p>
+              </th>
+
+              <th style="width:25%" class="right noPrint">
+                <span class="tipName">Termly fee</span>
+
+                <p class="tipText">The daily fee for this weekday multiplied by the number of weekdays attended this
+                term. Thus this represents a total basic fee for just attending this weekday this term.</p>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="right noPrint"><span id="mon.dailyFee"></span></td>
+
+              <td class="right"><span id="mon.daysThisTerm"></span></td>
+
+              <td class="right noPrint"><span id="mon.termlyFee"></span></td>
+            </tr>
+
+            <tr>
+              <td class="right noPrint"><span id="tue.dailyFee"></span></td>
+
+              <td class="right"><span id="tue.daysThisTerm"></span></td>
+
+              <td class="right noPrint"><span id="tue.termlyFee"></span></td>
+            </tr>
+
+            <tr>
+              <td class="right noPrint"><span id="wed.dailyFee"></span></td>
+
+              <td class="right"><span id="wed.daysThisTerm"></span></td>
+
+              <td class="right noPrint"><span id="wed.termlyFee"></span></td>
+            </tr>
+
+            <tr>
+              <td class="right noPrint"><span id="thu.dailyFee"></span></td>
+
+              <td class="right"><span id="thu.daysThisTerm"></span></td>
+
+              <td class="right noPrint"><span id="thu.termlyFee"></span></td>
+            </tr>
+
+            <tr>
+              <td class="right noPrint"><span id="fri.dailyFee"></span></td>
+
+              <td class="right"><span id="fri.daysThisTerm"></span></td>
+
+              <td class="right noPrint"><span id="fri.termlyFee"></span></td>
+            </tr>
+
+            <tr class="totalRow noPrint">
+              <td colspan="3" class="right">
+                <span class="tipName">Before discounts and funding:&nbsp;&nbsp;</span>
+
+                <p class="tipText">The sum of the above prices for each weekday.</p><span id="basicTermlyFee"></span>
+              </td>
+            </tr>
+
+            <tr class="totalRow">
+              <td colspan="3" class="right">
+                <span class="tipName">Charges for hours not funded by the FEEE:&nbsp;&nbsp;</span>
+
+                <p class="tipText">Total payable before any payment
+                surcharges have been applied.</p><strong class="termlyFee">&nbsp;</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+    <div class="container_12 stage4 noPrint">
+      <div class="grid_12 alpha omega">
+        <h2>Payment method</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <td><input type="radio" name="payment" value="upfront" checked="checked"></td>
+
+              <th>Upfront</th>
+
+              <td><em>no extra charge</em></td>
+
+              <td><span class="paymentUpfrontTotalPerPayment">&nbsp;</span> due on <span class=
+              "paymentUpfrontDates">&nbsp;</span></td>
+            </tr>
+
+            <tr>
+              <td><input type="radio" name="payment" value="monthly"></td>
+
+              <th>Monthly</th>
+
+              <td><span class="paymentMonthlyExtraPerPayment">&nbsp;</span> extra per month</td>
+
+              <td><span class="paymentMonthlyTotalPerPayment">&nbsp;</span> due on <span class=
+              "paymentMonthlyDates">&nbsp;</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+    <div class="container_12 stage4 noScreen">
+      <div class="grid_3 alpha">
+        <ul class="kvList">
+          <li>
+            <div class="key">
+              Payment method
+            </div>
+
+            <div class="value paymentChosenMethod">
+              &nbsp;
+            </div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              Extra per payment
+            </div>
+
+            <div class="value paymentChosenExtraPerPayment">
+              &nbsp;
+            </div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              No. payments
+            </div>
+
+            <div class="value paymentChosenCount">
+              &nbsp;
+            </div>
+
+            <div class="clear"></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="grid_3">
+        <ul class="kvList">
+          <li>
+            <div class="key">
+              Extra per term
+            </div>
+
+            <div class="value paymentChosenExtraPerTerm">
+              &nbsp;
+            </div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              Total per term
+            </div>
+
+            <div class="value paymentChosenTotalPerTerm">
+              &nbsp;
+            </div>
+
+            <div class="clear"></div>
+          </li>
+
+          <li>
+            <div class="key">
+              Total per payment
+            </div>
+
+            <div style="font-weight: bold;" class="value paymentChosenTotalPerPayment">
+              &nbsp;
+            </div>
+
+            <div class="clear"></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="grid_6">
+        <p>Payment is due on <span class="paymentChosenDates">&nbsp;</span> Late payments will incur a late payment
+        penalty of 10%.</p>
+
+        <p>We accept BACS using the following details: Account name: <q>Lexden Montessori Limited</q>, Sort code:
+        20-22-67, Account no.: 63048896.</p>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+  </form>
+
+  <div id="fixedFooterPadding" class="noPrint">
+    <!--Ensures no content blocked by #fixedFooter-->
+
+    <div class="container_12">
+      <div class="grid_3">
+        <p class="bigFee">&nbsp;</p>
+
+        <p class="perX">&nbsp;</p>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div id="fixedFooter" class="noPrint">
+    <div class="container_12">
+      <div id="summaryBox" style="margin-bottom: -200px" class="grid_12 alpha omega">
+        <div class="grid_4 alpha">
+          <p class="bigFee paymentUpfrontTotalPerPayment">&nbsp;</p>
+
+          <p class="perX">per term</p>
+        </div>
+
+        <div class="grid_4">
+          <p class="bigFee paymentMonthlyTotalPerPayment">&nbsp;</p>
+
+          <p class="perX">per month</p>
+        </div>
+
+        <div class="grid_4 omega">
+          <p class="bigFee hourlyFee">&nbsp;</p>
+
+          <p class="perX">per hour</p>
+        </div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[submodule "public/vendor/underscore"]
+	path = public/vendor/underscore
+	url = https://github.com/documentcloud/underscore.git
+[submodule "public/vendor/fluid960"]
+	path = public/vendor/fluid960
+	url = https://github.com/bauhouse/fluid960gs.git
+[submodule "public/vendor/tipsy"]
+	path = public/vendor/tipsy
+	url = git://github.com/jaz303/tipsy.git
+[submodule "public/vendor/requirejs"]
+	path = public/vendor/requirejs
+	url = https://github.com/jrburke/requirejs.git
