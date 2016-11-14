@@ -1609,3 +1609,16 @@ terms:
   funding: { funded: false }
   minimumAge: 2
   <<: *fees-2017-09-onwards
+
+- year: 2017
+  season: summer
+  type: holiday
+  babyroom: false
+  provisional: true
+  dates:
+    interval: [2018-07-20, 2017-09-01]  # TODO end date; requires funding info
+    holes:
+    - 2017-08-28
+  funding: { funded: false }
+  minimumAge: 2
+  <<: *fees-2015-09-to-2017-09
